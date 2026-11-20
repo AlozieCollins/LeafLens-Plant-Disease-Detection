@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f8f2">
+  <title>LeafLens | Your plant health companion</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="{{ url_for('home') }}" aria-label="LeafLens home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M36 10C19 9 11 18 11 30c0 5 4 9 9 9 12 0 20-11 16-29Z" fill="#D4EDB0" stroke="#226747" stroke-width="2.5"/><path d="M14 35c6-9 12-14 22-20M23 26l-1-9" stroke="#226747" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </span>
+        <span>Leaf<span class="brand-accent">Lens</span></span>
+      </a>
+      <div class="header-right"><span class="header-dot"></span><span>Plant health companion</span><span class="group-tag">SEN 281 · GROUP 5</span></div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> A LITTLE CARE GOES A LONG WAY</span>
+          <h1 id="hero-title">Let's take a closer look<br>at <em>your plant.</em></h1>
+          <p>Not sure what's happening to your tomato leaves? Start with a photo. We'll help you take the first step toward understanding your plant's health.</p>
+          <div class="hero-points"><span>✓ Easy to use</span><span>✓ Tomato leaf focused</span><span>✓ Built with care</span></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="halo halo-one"></div><div class="halo halo-two"></div>
+          <svg class="plant-illustration" viewBox="0 0 370 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="186" cy="306" rx="106" ry="16" fill="#D6E2C9"/>
+            <path d="M178 285c-2-60 9-129 13-185" stroke="#347950" stroke-width="9" stroke-linecap="round"/>
+            <path d="M184 208c-20-31-55-55-92-55 2 47 37 76 89 72" fill="#6B9F6B" stroke="#2B6A48" stroke-width="4"/>
+            <path d="M183 223c-20-29-48-48-75-56" stroke="#D5E9B3" stroke-width="3" stroke-linecap="round"/>
+            <path d="M189 172c18-38 51-60 94-58-5 51-36 78-98 76" fill="#B1D27D" stroke="#2B6A48" stroke-width="4"/>
+            <path d="M190 187c21-31 45-48 75-59" stroke="#E9F2C8" stroke-width="3" stroke-linecap="round"/>
+            <path d="M190 132c-25-31-35-70-27-106 44 18 59 55 42 103" fill="#87B46A" stroke="#2B6A48" stroke-width="4"/>
+            <path d="M190 125c-10-37-18-58-25-78" stroke="#DAEAC2" stroke-width="3" stroke-linecap="round"/>
+            <path d="M185 258c-47-20-80-18-109 1 26 29 60 36 107 16" fill="#A5C976" stroke="#2B6A48" stroke-width="4"/>
+            <path d="M184 272c-36-13-61-14-90-12" stroke="#E0ECC0" stroke-width="3" stroke-linecap="round"/>
+            <path d="M190 261c25-24 59-29 92-17-20 37-52 48-94 33" fill="#79A86C" stroke="#2B6A48" stroke-width="4"/>
+            <path d="M191 273c36-21 57-25 75-26" stroke="#D3E7B9" stroke-width="3" stroke-linecap="round"/>
+            <path d="M143 282h87l-13 50h-60l-14-50Z" fill="#D08F61" stroke="#915D43" stroke-width="4"/><path d="M137 277h99v12h-99z" rx="5" fill="#E4AF84" stroke="#915D43" stroke-width="4"/>
+            <circle cx="272" cy="70" r="9" fill="#E7B96D"/><circle cx="97" cy="99" r="6" fill="#D8AF6A"/><path d="M281 177l6-6m-6 0 6 6M82 202l5-5m-5 0 5 5" stroke="#C3A871" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <div class="floating-note"><span class="note-icon">✦</span><span>Every leaf<br><strong>has a story.</strong></span></div>
+        </div>
+      </section>
+
+      <section class="workspace" aria-labelledby="workspace-heading">
+        <div class="workspace-heading"><div><span class="section-kicker">LET'S GET STARTED</span><h2 id="workspace-heading">Show us your tomato leaf</h2><p>Upload a clear photo, and we'll take it from there—one step at a time.</p></div><span class="step-indicator">STEP 01 / UPLOAD</span></div>
+        <div class="workspace-grid">
+          <div class="upload-panel">
+            <div class="conversation" id="conversation" role="status" aria-live="polite">
+              <div class="assistant-avatar" aria-hidden="true">✳</div>
+              <div class="speech-bubble"><span class="speech-intro">HELLO, I'M LEAFLENS!</span><p id="assistant-message">Hi there! 🌱 Have a tomato leaf you'd like to check? Choose a photo below and I'll help you get started.</p></div>
+            </div>
+            <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" id="upload-form">
+              <label for="leaf_image" id="drop-zone" class="drop-zone">
+                <span class="upload-symbol" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V3m0 0L7 8m5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg></span>
+                <strong id="upload-title">Drop your leaf photo here</strong>
+                <span class="drop-description" id="file-name">or click to browse your files</span>
+                <span class="format-pill">JPG or PNG · Up to 8 MB</span>
+                <input type="file" id="leaf_image" name="leaf_image" accept="image/jpeg,image/png,.jpg,.jpeg,.png" required>
+              </label>
+              <div class="client-preview" id="client-preview" hidden><img id="preview-image" alt="Selected leaf photo preview"><div><strong>Your photo looks ready!</strong><span id="preview-filename"></span></div><button type="button" class="remove-button" id="remove-image" aria-label="Remove selected photo">×</button></div>
+              <button class="primary-button" id="submit-button" type="submit" disabled><span id="button-label">Choose a photo to continue</span><span aria-hidden="true">↗</span></button>
+              <p class="upload-hint">Your upload is stored for this project. Disease prediction is coming in a later milestone.</p>
+            </form>
+            {% if error %}<div class="server-message error-message" role="alert">{{ error }}</div>{% endif %}
+            {% if image %}<div class="result-panel" id="result-panel"><div class="result-heading"><span class="result-check">✓</span><div><span class="section-kicker">UPLOAD COMPLETE</span><h3>Wonderful, we've got your leaf!</h3></div></div><p>{{ success or 'Your image has been saved.' }} This is a preview only—our disease detection model isn't connected yet.</p><img src="{{ image }}" alt="Uploaded and saved tomato leaf"><div class="result-footer"><span>✓ Photo saved</span><span>Next: image preprocessing</span></div></div>{% endif %}
+          </div>
+          <aside class="tips-panel"><span class="tips-icon" aria-hidden="true">☀</span><span class="section-kicker">A LITTLE PHOTO ADVICE</span><h3>Let's get a<br>great photo.</h3><p>A clearer photo makes it easier to examine your leaf.</p><ul><li><span>01</span> Use good natural lighting.</li><li><span>02</span> Keep the leaf in focus.</li><li><span>03</span> Show the full leaf clearly.</li><li><span>04</span> Avoid busy backgrounds.</li></ul><div class="tips-footer">🌿 Small steps, healthier plants.</div></aside>
+        </div>
+      </section>
+
+      <section class="about-strip"><div><span class="section-kicker">BEHIND THE PROJECT</span><h2>A little technology.<br><em>A lot of possibility.</em></h2><p>LeafLens is a student computer vision project exploring how image processing and machine learning can support plant disease identification.</p></div><a class="notebook-link" href="https://colab.research.google.com/drive/1Zq4ZhwuatgT8tbjPTyRrFLRSwpFllJ0g?usp=sharing" target="_blank" rel="noopener noreferrer">Explore our Colab notebook <span>↗</span></a></section>
+    </main>
+    <footer class="footer"><span>© LeafLens · SEN 281 · Group 5</span><span>Made with curiosity and care 🌿</span></footer>
+  </div>
+  <script>
+    // Tell the visitor that the server has already saved their uploaded image.
+    window.leafLensUploadComplete = {{ 'true' if image else 'false' }};
+    window.leafLensUploadError = {{ 'true' if error else 'false' }};
+  </script>
+</body>
+</html>

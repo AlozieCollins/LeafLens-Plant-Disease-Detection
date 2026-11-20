@@ -1,0 +1,22 @@
+# Python temporary files
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# Flask uploaded images
+static/uploads/
+
+# Large datasets and model files
+LeafLens_Dataset/
+LeafLens_Split/
+LeafLens_Processed/
+LeafLens_Field_Photos/
+*.h5
+*.keras
+*.pt
+
+# Editor and operating system files
+.vscode/
+.DS_Store
